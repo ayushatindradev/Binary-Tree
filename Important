@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    Node(int val){
+        this->data = val;
+        this->left = this->right = nullptr;
+    }
+
+};
+int maxDepth(Node *node){
+    if(node == NULL){
+        return 0;
+    }
+    int left = maxDepth(node->left);
+    int right = maxDepth(node->right);
+    int ans = max(left,right)+1;
+    return ans;
+}
+int diameterOfBinaryTree(Node* node){
+    if(node == NULL){
+        return 0;
+    }
+    // if the diameter is present at the both the combination of the left and right
+    int option1= max(maxDepth(node->left),maxDepth(node->right))+1;
+    // if the diametre is present at the left subtree
+    int option2 = diameterOfBinaryTree(node->left);
+    // if the height of the diameter is present at the right subtree
+    int option3= diameterOfBinaryTree(node->right);
+    int ans = max(option1,max(option2,option3));
+    return ans;
+}
+int main(){
+    // calculating the height of the tree
+ Node* root =new Node(1);
+ root->left = new Node(2);
+ root->right = new Node(3);
+ cout<<"Height of the tree is "<<maxDepth(root);
+ cout<<"\nDiameter of the tree is "<<diameterOfBinaryTree(root);
+}
