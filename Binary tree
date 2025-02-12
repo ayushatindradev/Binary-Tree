@@ -1,0 +1,75 @@
+#include<iostream>
+#include<queue>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    Node(int data){
+        this->data= data;
+        left =NULL;
+        right = NULL;
+    }
+
+
+};
+Node* createTree(){
+    int data;
+    cout<<"Enter data: "<<endl;
+    cin >> data;
+    if(data==-1){
+        return NULL;
+    }
+    Node* node = new Node(data);
+    node->left = createTree();
+    node->right = createTree();
+
+    
+}
+void preorderTraversal(Node* node){
+// base case
+if(node == NULL){
+    return;
+}
+cout<<node->data<<" ";
+preorderTraversal(node->left);
+preorderTraversal(node->right);
+}
+void levelOrderTraveral(Node* node){
+    if(node == NULL){
+        return;
+    }
+    queue<Node*> q;
+    q.push(node);
+    q.push(NULL);
+    while(!q.empty()){
+        Node* temp = q.front();
+        q.pop();
+        cout<<temp->data<<" ";
+        if(node == NULL){
+            if(!q.empty()){
+                q.push(NULL);
+                cout<<endl;
+            }
+        }
+      if(temp->left){
+        q.push(temp->left);
+      }
+      if(temp->right){
+        q.push(temp->right);
+    }
+}
+int maxDepth(Node *node){
+    if(node == NULL){
+        return 0;
+    }
+    int leftSubtree =maxDepth(node->left);
+    int rightSubtree = maxDepth(node->right);
+    int ans =max(leftSubtree,rightSubtree)+1;
+    return ans;
+
+}
+int main(){
+
+}
