@@ -1,4 +1,4 @@
-#include<iostream>
+// #include<iostream>
 // using namespace std;
 // class Node{
 // public:
@@ -111,3 +111,373 @@
 // }
 
 // }
+
+// // 1. What is a Binary Tree?
+// A binary tree is a hierarchincal struture where each node has most two child ,left and right.
+// 2. What is the difference between a Binary Tree and a Binary Search Tree (BST)?
+// A binaryy tree has no specific order.Any value can places in any node.
+// .Bst->left subtree has values less than the parent node.
+// Right subtree has values greater than the parent node.
+// 3. What are the types of Binary Trees?
+// Full binary-> every node has 0 or 2 child.
+// complte bt-> all level are complletely filed except possibleu th elast level.
+// Perfect Binary Tree → All internal nodes havs two childern amd all leave are at the same level.
+// Balanced Binary Tree->Height is o(long)
+// degerate (skew )tree->each nodes has only one child
+
+// 4. How many children can a node have in a Binary Tree?
+// 0,1,2
+// 5. What is the height of a Binary Tree?
+// The height of binary tree is the number osf edges in longest path from the root to __INT_LEAST8_FMTd__
+// 6. Write a function to create a simple Binary Tree in C++.
+
+// 6. Write a function to create a simple Binary Tree in C++.
+// #include <iostream>
+// using namespace std;
+// void inorder(Node* root){
+//     if(root == NULL){
+//         return;
+//     }
+//     inorder(root->left);
+//     cout<<root->data<<" ";
+//     inorder(root->right);
+// }
+// class Node{
+// public:
+// int data;
+// Node* left;
+// Node* right;
+// Node(int val){
+//     data= val;
+//     left= NULL;
+//     right= NULL;
+// }
+// };
+// int height (Node* root){
+//     if(root ==NULL){
+//         return 0;
+//     }
+//     int leftHeight = height(root->left);
+//     int rightHeight = height(root->right);
+//     int ans = max(leftHeight, right)+1;
+//     return ans;
+// }
+// int countNode(Node* root){
+//     if(root == NULL){
+//         return 0;
+//     }
+//     int leftCount = countNode(root->left);
+//     int rightCount = countNode(root->right);
+//     int ans = leftCount+rightCount+1;
+//     return ans;
+// }
+// int main(){
+//     Node* root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     cout<<"Binary tree created succeesssfully!"<<endl;
+//     7. How do you find the maximum depth (or height) of a Binary Tree?
+//     8. How do you count the total number of nodes in a Binary Tree?
+//     9. What are the different tree traversal techniques?
+// preorder ,postorder ,postorder
+// What is a node in a Binary Tree?
+A node os a structre that containes data ans pointer to left ans right child 
+What is the root node?
+
+The top most node the tree.
+
+What are leaf nodes?
+
+Node that have no chikderen (both left ans right are NULL)
+What is the parent of a node?
+
+How many children can a node have in a Binary Tree?
+
+At most 2
+What is the height of a single-node tree?
+0 because it has no edges.
+
+What is the height of an empty tree?
+-1 or 0 
+What is the depth of a node?
+The number of edges from root to that node.
+What is a subtree?
+
+A tree formed by any node and its children.
+What is the size of a tree?
+Total noumber of nodes.
+
+How do you define a simple Binary Tree node in C++?
+cpp
+Copy
+Edit
+class{
+    public:
+    int data;
+    NOde* left;
+    Node* right;
+    Node(int data){
+        this->data = data;
+        this->left = NULL;
+        this->right = NULL;
+    }
+}
+How do you create a simple Binary Tree?
+Node* root = new Node(1);
+root->left= new Node(2);
+root->right = new Node(3);
+
+How do you check if a Binary Tree is empty?
+bool isEmpty(Node* root)
+{
+return root==NULL;
+}
+How do you find the height of a Binary Tree?
+int height(Node* root){
+    if(!root){
+        return 0;
+    }
+    return 1+ max(height(root->left), height(root->right));
+}
+How do you count the total number of nodes in a tree?
+int countNode(Node* root){
+    if(root ==NULL){
+        return 0;
+
+    }
+    int leftCOunt = countNode(root->left);
+    int rightCount = countNode(root->right);
+    return leftCount+rightCount+1;
+}
+How do you perform Preorder Traversal (Root → Left → Right)?
+void preorder(Node* root){
+    if(!root){
+        return;
+    }
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+How do you perform Inorder Traversal (Left → Root → Right)?
+void inorder(Node* root){
+    if(!root){
+        return;
+    }
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+How do you perform Postorder Traversal (Left → Right → Root)?
+void postorder(Node* root){
+    if(!root){
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
+}
+How do you check if a tree has only one node?
+bool isSingleNodes(Node* &root){
+    return root && !root->left && !root->right;
+}
+How do you delete a tree?
+void deleteTree(Node* &root){
+    if(!root){
+        return;
+    }
+    deleteTree(root->left);
+    deleteTree(root->right);
+    delete root;
+    root =NULL;
+}
+What is a Binary Tree?
+A data structre where each nodes has at most 2 childern 
+What are the parts of a Binary Tree?
+Root ,left ans right leaf child.
+What is the root node?
+The topmost node of the tree.
+What is a child node?
+A node linked to its parent node.
+What is a leaf node?
+A node with no childeren.
+How many nodes does a Binary Tree have in the worst case?
+n nodes (skew tree)
+What is the maximum number of nodes at level h?
+2^n
+How many edges does a Binary Tree with N nodes have?
+n-1
+What is a full Binary Tree?
+every node has either 0 or 2 child.
+What is a complete Binary Tree?
+Evet leavel complete d fillef except the last.
+What is the height of a tree with one node?
+0
+What is the height of an empty tree?
+-1
+What is the minimum number of nodes in a tree of height h?
+h+1
+What is the maximum number of nodes in a tree of height h?
+2^(h+1)-1
+What is a skewed Binary Tree?
+A tree where all nodes have only one child 
+What is a balanced Binary Tree?
+A tree where the height is o(logn)
+What is a perfect Binary Tree?
+A tree ehre all leves are the same level.
+What is a degenerate tree?
+A tree that behaves likelinked list.
+What is a subtree?
+A tree that is part of another tree.
+What is the depth of a node?
+The number of eded from t the root
+How do you define a Binary Tree node in C++?
+class Node{
+  public:
+  int data;
+  Node* left;
+  Node* right;
+  Node(int data){
+    this->data = data;
+    this->left = NULL;
+    this->right = NULL;
+  }  
+}
+How do you create a simple Binary Tree?
+Node* root = new Node(1);
+root->left = new Node(2);
+root->right = new Node(3);
+
+How do you check if a tree is empty?
+bool isEmpty(Node* root){
+    return root==NULL;
+}
+How do you count nodes in a tree?
+cpp
+Copy
+Edit
+int count(Node* root){
+    if(!root){
+        return 0;
+    }
+    return 1 + count(root->left)+count(root->right);
+}
+How do you find the height of a tree?
+int height(Node* root){
+    if(!root){
+        return 0;
+    }
+    return 1 + max(height(root->left), height(root->right));
+}
+How do you perform Preorder Traversal (Root → Left → Right)?
+void PreorderTraversal(Node* root){
+    if(!root){
+        return;
+    }
+    cout<<root->data<<" ";
+    PreorderTraversal(root->left);
+    PreorderTraversal(root->right);
+}
+
+How do you perform Inorder Traversal (Left → Root → Right)?
+void inorder(Node* root){
+    if(!root){
+        return;
+    }
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+How do you perform Postorder Traversal (Left → Right → Root)?
+void postorder(Node* root){
+    if(!root){
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
+}
+How do you check if a tree has only one node?
+bool isSingleNode(Node* root){
+    return root &&!root->left &&!root->right;
+}
+How do you delete a tree?
+void delete(Node* root){
+    if(!root){
+        return;
+    }
+    delete(root->left);
+    delete(root->right);
+    delete root;
+    root = NULL;
+}
+What is level order traversal?
+__BASE_FILE__
+How do you print all leaf nodes?
+void printLeafNode(Node* root){
+    if(!root){
+        return;
+    }
+    if(!root->left && !root->right){
+        cout<<root->data<<" ";
+    }
+    printLeafNode(root->left);
+    printLeafNode(root->right);
+}
+// How do you check if two trees are identical?
+// bool IsIdenticak(Node* root1, Node* root2){
+//     if(!root1|| !root2){
+//         return root1==root2;
+//     }
+// }
+
+What is an ancestor in a tree?
+Any node abouve a given __STDC_NO_THREADS__
+
+What is a descendant in a tree?
+ANy node below a given node.
+How do you find the maximum value in a Binary Tree?
+int findMax(Node* root){
+    if(!root){return INT_MIN}
+    return max(root->data,max(findMax(root->left),findMax(root->right)));
+}
+How do you find the minimum value in a Binary Tree?
+int findMIn(Node* root){
+    if(!root){
+        return INT_MAX;
+    }
+    return min(root->data, min(findMin(root->left), findMin(root->right)));
+}
+How do you find the number of leaf nodes?
+int countLeave(Node* root){
+    if(!root){
+        return 0;
+    }
+    if(!root->left && !root->right){
+        return 1;
+    }
+    return countLeaaves(root->left)+countLeaves(root->right);
+}
+What is the difference between a tree and a graph?
+A tree is a types no cycle ans is connect
+What is the use of a Binary Tree in real life?
+file system , database,routing tables
+1. What is a Binary Tree?
+A tree where each node has at most 2 chuld 
+2. What is the root of a Binary Tree?
+the topmost node of the tree.
+3. What is a leaf node?
+A node with no children.
+4. How many children can a node have in a Binary Tree?
+0,1,2
+5. What is the height of a Binary Tree?
+The longest path from root to a leaf.
+6. What is a full Binary Tree?
+A tree where noe\des has 0 or 2 child.
+7. What is Inorder Traversal?
+left->data->right.
+8. What is Preorder Traversal?
+root->left->right.
+9. What is Postorder Traversal?
+left->right->data10.
+10 What is a complete Binary Tree?
+A tree where all leaves are full except the last one.
